@@ -1,6 +1,6 @@
 POST http://localhost:8080/authenticate
 Content-Type: application/x-www-form-urlencoded
-Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
+Authorization: Basic RWxpOnNlbmhhMTIz
 
 > {%
     client.global.set("token", response.body )

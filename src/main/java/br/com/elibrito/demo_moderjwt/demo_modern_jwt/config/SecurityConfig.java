@@ -4,6 +4,7 @@ import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
 import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -63,6 +64,17 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    /**
+     * Criptografa a senha que voce quiser ao inicializar o projeto, para utilizar no data.sql pois utilizo o BCrypt
+     * @return
+     */
+    @Bean
+    CommandLineRunner commandLineRunner() {
+        return args -> {
+            System.out.println("Bcrypt: " + new BCryptPasswordEncoder().encode("senha123"));
+        };
     }
 
 }
